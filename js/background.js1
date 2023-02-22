@@ -1,0 +1,37 @@
+chrome.contextMenus.create({
+    id: "some-command5",
+    title: "finding href links",
+    contexts: ["all"]
+});
+
+
+
+var urlRegex = /<a\s+(?:[^>]*?\s+)?href=(["'])(.*?)\1/;
+
+// var urlRegex = /(https?:\/\/[^ ]*)/;
+
+function doStuffWithDom(domContent) {
+    console.log('I received the following DOM content:' + domContent);
+}
+
+// chrome.contextMenus.onClicked.addListener(function(info, tab) {
+chrome.action.onClicked.addListener(function(info, tab) {
+    // if (info.menuItemId == "some-command5") {
+    // var urls = document.getElementsByTagName('a');
+
+    // for (url in urls) {
+    //     console.log ( urls[url].href );
+    // }
+        if (urlRegex.test(info.url)) {
+        // ...if it matches, send a message specifying a callback too
+        // chrome.tabs.sendMessage(tab.id, {text: 'report_back'}, doStuffWithDom);
+        chrome.tabs.sendMessage(info.id, {method: 'getSelection'}, response => {
+            doStuffWithDom(info.url);
+        });
+
+        }else{
+            doStuffWithDom('no urls found');
+        }
+    // }        
+    
+});

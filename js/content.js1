@@ -1,0 +1,26 @@
+chrome.contextMenus.create({
+    id: "some-command5",
+    title: "finding href links",
+    contexts: ["all"]
+});
+chrome.extension.onMessage.addListener(
+    console.log('1')
+  function(request, sender, sendResponse) {
+    if (request.text && (request.text == "getDOM")) {
+        console.log('hi');
+      sendResponse({ dom: document.body.innerHTML });
+    }
+  }
+);
+
+// chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
+//     console.log('hi');
+//     console.log(message);
+//   if (message.method === 'getSelection') {
+//     var word = window.getSelection().toString().trim();
+//     console.log(word);
+//     sendResponse({ data: word });
+//   } else {
+//     sendResponse({});
+//   }
+// });

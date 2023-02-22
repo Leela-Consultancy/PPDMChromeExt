@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="popup.css">
+    </head>
+    <body>
+        <div class="container">
+            <ul id="framesContainer"></ul>
+        </div>
+        <script src="js/content.js"></script>
+    </body>
+</html>
