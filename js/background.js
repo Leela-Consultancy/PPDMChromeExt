@@ -7,6 +7,7 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
         document.querySelectorAll("a").forEach(link => {
           links.push(link.href);
         });
+        console.log(links);
         return links;
       }
     }, (results) => {
