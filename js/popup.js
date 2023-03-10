@@ -5,7 +5,9 @@ document.getElementById("fetch-links").addEventListener("click", () => {
       onComplete({error: chrome.runtime.lastError});
     }else{
       chrome.tabs.sendMessage(tabs[0].id, {message: "fetch_links"});
+      console.log(tabs[0].id);
       console.log(chrome.tabs.sendMessage(tabs[0].id, {message: "fetch_links"}));
     }
   });
 });
+
