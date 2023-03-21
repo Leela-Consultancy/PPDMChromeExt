@@ -1,17 +1,10 @@
 {
-  "manifest_version": 3,
-  "name": "Link Fetcher",
+  "name": "Link Extractor",
   "version": "1.0",
-  "permissions": [
-    "activeTab",
-    "scripting",
-    "declarativeNetRequest"
-  ],
+  "description": "Extracts all links from the current web page",
+  "manifest_version": 3,
+  "permissions": ["scripting",  "tabs","activeTab"],
   "action": {
     "default_popup": "popup.html"
-  },
-  "background": {
-    "service_worker": "js/background.js"
-  },
-  "host_permissions": ["<all_urls>"]
+  }
 }
